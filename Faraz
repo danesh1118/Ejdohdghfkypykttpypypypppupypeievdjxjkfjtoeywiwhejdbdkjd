@@ -1,0 +1,143 @@
+{
+  "dns": {
+    "final": "local-dns",
+    "strategy": "prefer_ipv4",
+    "rules": [
+      {
+        "action": "route",
+        "clash_mode": "Faraz🔥",
+        "server": "proxy-dns",
+        "source_ip_cidr": [
+          "172.19.0.0/30",
+          "fdfe:dcba:9876::1/126"
+        ]
+      },
+      {
+        "action": "route",
+        "clash_mode": "Faraz🔥",
+        "server": "direct-dns"
+      }
+    ],
+    "servers": [
+      {
+        "tag": "proxy-dns",
+        "address": "tcp://1.1.1.1",
+        "address_resolver": "local-dns",
+        "detour": "proxy"
+      },
+      {
+        "tag": "local-dns",
+        "address": "local",
+        "detour": "direct"
+      },
+      {
+        "tag": "direct-dns",
+        "address": "tcp://8.8.8.8",
+        "detour": "direct"
+      }
+    ]
+  },
+
+  "inbounds": [
+    {
+      "type": "tun",
+      "stack": "system",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": false,
+      "endpoint_independent_nat": false,
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "users": []
+    }
+  ],
+
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "proxy",
+      "outbounds": [
+        "auto",
+        "direct",
+        "Faraz🔥"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "Faraz🔥"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+
+    {
+      "headers": {
+        "Host": [
+          "scholar.google.com"
+        ]
+      },
+      "password": "i67s60ep",
+      "path": "",
+      "server": "135.136.28.62",
+      "server_port": 10780,
+      "domain_strategy": "",
+      "tag": "Faraz🔥",
+      "tls": {
+        "alpn": [
+          "h2,http/1.1"
+        ],
+        "disable_sni": false,
+        "enabled": false,
+        "server_name": ""
+      },
+      "type": "http",
+      "username": "purevpn0s8732217"
+    }
+  ],
+
+  "route": {
+    "auto_detect_interface": true,
+    "final": "proxy",
+    "rules": [
+      {
+        "action": "sniff"
+      },
+
+      {
+        "action": "route",
+        "clash_mode": "Faraz🔥",
+        "outbound": "direct"
+      },
+      {
+        "action": "route",
+        "clash_mode": "Faraz🔥",
+        "outbound": "proxy"
+      },
+      {
+        "action": "hijack-dns",
+        "protocol": "dns"
+      }
+    ]
+  }
+}
