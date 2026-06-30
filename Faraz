@@ -5,7 +5,7 @@
     "rules": [
       {
         "action": "route",
-        "clash_mode": "Faraz🔥",
+        "clash_mode": "Faraz 🇺🇸",
         "server": "proxy-dns",
         "source_ip_cidr": [
           "172.19.0.0/30",
@@ -14,7 +14,7 @@
       },
       {
         "action": "route",
-        "clash_mode": "Faraz🔥",
+        "clash_mode": "Faraz 🇺🇸",
         "server": "direct-dns"
       }
     ],
@@ -73,14 +73,14 @@
       "outbounds": [
         "auto",
         "direct",
-        "Faraz🔥"
+        "Faraz 🇺🇸"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "Faraz🔥"
+        "Faraz 🇺🇸"
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
@@ -90,29 +90,24 @@
       "type": "direct",
       "tag": "direct"
     },
-
     {
-      "headers": {
-        "Host": [
-          "scholar.google.com"
-        ]
-      },
-      "password": "i67s60ep",
-      "path": "",
-      "server": "135.136.28.62",
-      "server_port": 10780,
-      "domain_strategy": "",
-      "tag": "Faraz🔥",
+      "type": "trojan",
+      "tag": "Faraz 🇺🇸",
+      "server": "104.16.72.70",
+      "server_port": 443,
+      "password": "6c862415-30d2-4813-8e49-42e99a0bd415",
       "tls": {
-        "alpn": [
-          "h2,http/1.1"
-        ],
-        "disable_sni": false,
-        "enabled": false,
-        "server_name": ""
+        "enabled": true,
+        "server_name": "space.byu.id.yxls.eu.cc",
+        "alpn": ["h2", "http/1.1"]
       },
-      "type": "http",
-      "username": "purevpn0s8732217"
+      "transport": {
+        "type": "ws",
+        "path": "/us-gllc",
+        "headers": {
+          "Host": "space.byu.id.yxls.eu.cc"
+        }
+      }
     }
   ],
 
@@ -123,15 +118,14 @@
       {
         "action": "sniff"
       },
-
       {
         "action": "route",
-        "clash_mode": "Faraz🔥",
+        "clash_mode": "Faraz 🇺🇸",
         "outbound": "direct"
       },
       {
         "action": "route",
-        "clash_mode": "Faraz🔥",
+        "clash_mode": "Faraz 🇺🇸",
         "outbound": "proxy"
       },
       {
